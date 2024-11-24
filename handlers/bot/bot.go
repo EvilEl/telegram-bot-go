@@ -29,8 +29,6 @@ func CreateBot() {
 	updates := bot.GetUpdatesChan(u)
 
 	for update := range updates {
-
-		fmt.Println(update.Message)
 		if update.Message == nil { // ignore any non-Message updates
 			continue
 		}
@@ -41,14 +39,13 @@ func CreateBot() {
 		// Create a new MessageConfig. We don't have text yet,
 		// so we leave it empty.
 		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "")
+		msg.ParseMode = "markdown"
 		// Extract the command from the Message.
 		switch update.Message.Command() {
-		case "help":
-			msg.Text = "I understand /sayhi and /status."
-		case "sayhi":
-			msg.Text = "Hi :)"
-		case "status":
-			msg.Text = "I'm ok."
+		case "github":
+			msg.Text = GetGithubLink()
+		case "guide":
+			msg.Text = GetGuideText()
 		default:
 			msg.Text = "I don't know that command"
 		}

@@ -6,12 +6,12 @@ import (
 
 var botCommand = []tgbotapi.BotCommand{
 	{
-		Command:     "help",
-		Description: "Помощь",
+		Command:     "github",
+		Description: "github",
 	},
 	{
-		Command:     "status",
-		Description: "Получить статус",
+		Command:     "guide",
+		Description: "Справочник",
 	},
 }
 
