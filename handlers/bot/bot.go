@@ -47,7 +47,7 @@ func CreateBot() {
 		case "guide":
 			msg.Text = GetGuideText()
 		default:
-			msg.Text = "I don't know that command"
+			msg.Text = "I don't know that command..."
 		}
 
 		if _, err := bot.Send(msg); err != nil {
